@@ -2,6 +2,7 @@ package com.teapayment.challenge.controller.v1;
 
 import com.teapayment.challenge.domain.dto.SubscriptionRequest;
 import com.teapayment.challenge.domain.error.ValidationErrorResponse;
+import com.teapayment.challenge.domain.model.Subscription;
 import com.teapayment.challenge.service.interefaces.SubscriptionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,9 +21,9 @@ public class SubscriptionController {
 
 
     @PostMapping
-    public ResponseEntity<SubscriptionRequest> makeSubscription(@Valid @RequestBody SubscriptionRequest subscriptionRequest) {
-        subscriptionService.saveSubscription(subscriptionRequest);
-        return ResponseEntity.ok(subscriptionRequest);
+    public ResponseEntity<Subscription> makeSubscription(@Valid @RequestBody SubscriptionRequest subscriptionRequest) {
+        Subscription subscription = subscriptionService.saveSubscription(subscriptionRequest);
+        return ResponseEntity.ok(subscription);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
