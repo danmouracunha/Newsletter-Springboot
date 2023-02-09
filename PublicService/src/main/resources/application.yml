@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: PublicService
   jpa:
     database: POSTGRESQL
     show-sql: true
@@ -15,4 +17,10 @@ spring:
     password: password
     baseline-description: true
 server:
-  port:8090
+  port: 0
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

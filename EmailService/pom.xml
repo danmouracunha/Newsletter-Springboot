@@ -6,7 +6,6 @@
 		<groupId>com.teapayment</groupId>
 		<artifactId>challenge</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<artifactId>EmailService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -14,6 +13,9 @@
 	<description>EmailService</description>
 	<properties>
 		<java.version>11</java.version>
+		<spring-cloud.version>2021.0.1</spring-cloud.version>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 	</properties>
 	<dependencies>
 		<dependency>
