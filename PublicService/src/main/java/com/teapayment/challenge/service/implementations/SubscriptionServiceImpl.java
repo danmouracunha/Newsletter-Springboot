@@ -4,7 +4,6 @@ import com.teapayment.challenge.domain.dto.SubscriptionRequest;
 import com.teapayment.challenge.domain.model.Subscription;
 import com.teapayment.challenge.repository.SubscriptionRepository;
 import com.teapayment.challenge.service.interefaces.SubscriptionService;
-import jdk.jshell.JShell;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

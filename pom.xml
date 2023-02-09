@@ -8,11 +8,16 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+	<packaging>pom</packaging>
 	<groupId>com.teapayment</groupId>
 	<artifactId>challenge</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>challenge</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Demo project for Spring Boot </description>
+	<modules>
+		<module>PublicService</module>
+		<module>EmailService</module>
+	</modules>
 	<properties>
 		<java.version>11</java.version>
 	</properties>

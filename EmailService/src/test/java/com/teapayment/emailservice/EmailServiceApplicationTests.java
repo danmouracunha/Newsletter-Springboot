@@ -1,10 +1,10 @@
-package com.teapayment.challenge;
+package com.teapayment.emailservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ChallengeApplicationTests {
+class EmailServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
