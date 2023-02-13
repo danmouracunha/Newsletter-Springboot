@@ -7,17 +7,17 @@ spring:
     hibernate:
       ddl-auto: none
   datasource:
-    url: jdbc:postgresql://localhost:5432/challenge
+    url: jdbc:postgresql://postgresservice:5432/challenge
     username: postgres
     password: password
     driverClassName: org.postgresql.Driver
   flyway:
-    url: jdbc:postgresql://localhost:5432/challenge
+    url: jdbc:postgresql://postgresservice:5432/challenge
     user: postgres
     password: password
     baseline-description: true
   rabbitmq:
-    host: localhost
+    host: rabbitmq
     port: 5672
     stream:
       username: guest
@@ -27,10 +27,10 @@ server:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eurekaserver:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-    hostname: localhost
+    hostname: eurekaserver
 mq:
   queue:
     send-email: send-email

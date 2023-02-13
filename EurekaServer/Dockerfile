@@ -1,13 +1,18 @@
+FROM maven:3.8.3-jdk-11  as build
+
+ENV APP_HOME /app
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+COPY . .
+
+RUN mvn clean package -DskipTests
+
 FROM maven:3.8.3-jdk-11
-ARG SERVICE_NAME
 
-WORKDIR /app
+ENV APP_HOME /app
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
 
-COPY ../pom.xml ./
-RUN mvn -B -f ./pom.xml -s /usr/share/maven/ref/settings-docker.xml dependency:resolve
-
-COPY ./${SERVICE_NAME}/target/*.jar ./app.jar
-
-EXPOSE 8080
-
-CMD ["java", "-jar", "app.jar"]
+COPY ./target/*.jar ./app.jar
+EXPOSE 8761
+ENTRYPOINT java -jar app.jar

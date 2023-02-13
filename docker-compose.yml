@@ -1,28 +1,62 @@
 version: "3.9"
 
 services:
-  public_service:
+  eurekaserver:
+    container_name: eurekaserver
     build:
-      context: .
+      context: ./EurekaServer
       dockerfile: Dockerfile
-    image: public_service
-    working_dir: /SubscriptionService/app
     ports:
-      - "8090:8090"
-      - "5005:5005"
+      - "8761:8761"
+    image: eurekaserver
     command: mvn clean spring-boot:run
+    networks:
+      - private-network
+  gateway_service:
+    build:
+      context: ./CloudGateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    image: gateway_service
+    command: mvn clean spring-boot:run
+    networks:
+      - private-network
+  subscription_service:
+    container_name: subscription_service
+    build:
+      context: ./SubscriptionService
+      dockerfile: Dockerfile
+    image: subscription_service
+    command: mvn clean spring-boot:run
+    networks:
+      - private-network
+  email_service:
+    container_name: email_service
+    build:
+      context: ./EmailService
+      dockerfile: Dockerfile
+    image: email_service
+    command: mvn clean spring-boot:run
+    networks:
+      - private-network
   db:
+    container_name: postgresservice
     image: postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
       POSTGRES_DB: challenge
-    ports:
-      - "5432:5432"
+    networks:
+      - private-network
   rabbitmq:
+    container_name: rabbitmq
     image: rabbitmq:3.9-management
-    environment:
-      RABBITMQ_ERLANG_COOKIE: "secretcookie"
-    ports:
-      - "5672:5672"
-      - "15672:15672"
+    networks:
+      - private-network
+networks:
+  private-network:
+    name: private-network
+    driver: bridge
+
+
