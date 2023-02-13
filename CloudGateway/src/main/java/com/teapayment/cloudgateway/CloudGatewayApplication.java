@@ -19,7 +19,7 @@ public class CloudGatewayApplication {
     @Bean
     public RouteLocator routes(RouteLocatorBuilder routeLocatorBuilder){
         return routeLocatorBuilder
-                .routes().route(route -> route.path("/subscription/**").uri("lb://PublicService"))
+                .routes().route(route -> route.path("/subscription/**").uri("lb://publicservice"))
                 .build();
     }
 

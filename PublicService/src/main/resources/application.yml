@@ -1,6 +1,6 @@
 spring:
   application:
-    name: PublicService
+    name: publicservice
   jpa:
     database: POSTGRESQL
     show-sql: true
@@ -16,6 +16,12 @@ spring:
     user: postgres
     password: password
     baseline-description: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    stream:
+      username: guest
+      password: guest
 server:
   port: 0
 eureka:
@@ -24,3 +30,6 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+mq:
+  queue:
+    send-email: send-email

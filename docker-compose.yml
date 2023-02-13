@@ -2,7 +2,10 @@ version: "3.9"
 
 services:
   public_service:
-    build: ..
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: public_service
     working_dir: /PublicService/app
     ports:
       - "8090:8090"
@@ -15,4 +18,11 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: challenge
     ports:
-      - 5432:5432
+      - "5432:5432"
+  rabbitmq:
+    image: rabbitmq:3.9-management
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "secretcookie"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
