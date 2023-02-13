@@ -7,6 +7,16 @@ spring:
     stream:
       username: guest
       password: guest
+  mail:
+    host: smtp.gmail.com
+    username: damouracunha@gmail.com
+    password: suyngkwlliqcuslx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 server:
   port: 0
 eureka:
@@ -15,6 +25,11 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    prefer-ip-address: true
 mq:
   queue:
     send-email: send-email
+email:
+  production:
+    active: false
+  test: damouracunha@gmail.com

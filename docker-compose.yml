@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: public_service
-    working_dir: /PublicService/app
+    working_dir: /SubscriptionService/app
     ports:
       - "8090:8090"
       - "5005:5005"

@@ -17,7 +17,7 @@
 	<modules>
 		<module>EurekaServer</module>
 		<module>CloudGateway</module>
-		<module>PublicService</module>
+		<module>SubscriptionService</module>
 		<module>EmailService</module>
 	</modules>
 	<properties>
