@@ -31,5 +31,5 @@ mq:
     send-email: send-email
 email:
   production:
-    active: false
+    active: true
   test: damouracunha@gmail.com

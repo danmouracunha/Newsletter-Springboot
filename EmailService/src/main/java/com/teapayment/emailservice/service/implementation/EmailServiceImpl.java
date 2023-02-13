@@ -1,29 +1,26 @@
 package com.teapayment.emailservice.service.implementation;
 
 import com.teapayment.emailservice.domain.Email;
+import com.teapayment.emailservice.service.interfaces.EmailService;
 import lombok.RequiredArgsConstructor;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
-import com.teapayment.emailservice.service.interfaces.EmailService;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 
 @Component
 @Slf4j
 @RequiredArgsConstructor
-@ConditionalOnProperty(prefix = "email.production", name = "active", havingValue = "false")
-public class EmailServiceLocal implements EmailService {
+@ConditionalOnProperty(prefix = "email.production", name = "active", havingValue = "true")
+public class EmailServiceImpl implements EmailService {
     private final JavaMailSender javaMailSender;
 
     private String sender;
-    @Value("${email.test}")
-    private String emailTest;
 
     @Override
     public void sendEmail(Email email) throws MessagingException {
@@ -32,7 +29,7 @@ public class EmailServiceLocal implements EmailService {
             mailMessage.setSubject(email.getSubject());
             MimeMessageHelper helper = new MimeMessageHelper(mailMessage, true);
             helper.setFrom("sender@oi.com");
-            helper.setTo(emailTest);
+            helper.setTo(email.getDestinatary());
             helper.setText(email.getMessage(), true);
 
             javaMailSender.send(mailMessage);
