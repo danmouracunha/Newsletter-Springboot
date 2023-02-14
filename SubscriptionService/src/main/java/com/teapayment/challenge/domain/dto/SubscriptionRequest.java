@@ -1,5 +1,6 @@
 package com.teapayment.challenge.domain.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.Email;
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @Getter
+@Builder
 public class SubscriptionRequest {
     @Email
     @NotNull
