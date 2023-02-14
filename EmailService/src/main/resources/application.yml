@@ -2,7 +2,7 @@ spring:
   application:
     name: EmailService
   rabbitmq:
-    host: localhost
+    host: rabbitmq
     port: 5672
     stream:
       username: guest
@@ -26,6 +26,7 @@ eureka:
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
     prefer-ip-address: true
+    hostname: emailservice
 mq:
   queue:
     send-email: send-email

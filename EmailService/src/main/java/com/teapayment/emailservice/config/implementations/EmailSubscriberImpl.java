@@ -17,7 +17,7 @@ public class EmailSubscriberImpl implements EmailSubscriber {
     @RabbitListener(queues = "${mq.queue.send-email}")
     public void receiveSendEmailEvent(@Payload String payload) {
         try {
-            emailService.sendNewsletterEmail("marquinhos-do-arroz@gma1.com");
+            emailService.sendNewsletterEmail(payload);
         } catch (MessagingException e) {
             throw new RuntimeException(e);
         }

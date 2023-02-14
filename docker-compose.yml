@@ -13,6 +13,7 @@ services:
     networks:
       - private-network
   gateway_service:
+    container_name: gateway_service
     build:
       context: ./CloudGateway
       dockerfile: Dockerfile
@@ -22,8 +23,8 @@ services:
     command: mvn clean spring-boot:run
     networks:
       - private-network
-  subscription_service:
-    container_name: subscription_service
+  subscriptionservice:
+    container_name: subscriptionservice
     build:
       context: ./SubscriptionService
       dockerfile: Dockerfile
@@ -31,8 +32,8 @@ services:
     command: mvn clean spring-boot:run
     networks:
       - private-network
-  email_service:
-    container_name: email_service
+  emailservice:
+    container_name: emailservice
     build:
       context: ./EmailService
       dockerfile: Dockerfile
@@ -50,7 +51,7 @@ services:
     networks:
       - private-network
   rabbitmq:
-    container_name: rabbitmq
+    container_name: Dockerfile
     image: rabbitmq:3.9-management
     networks:
       - private-network

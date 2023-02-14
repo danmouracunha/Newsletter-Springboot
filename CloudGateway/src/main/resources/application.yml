@@ -16,4 +16,5 @@ eureka:
     service-url:
       defaultZone: http://eurekaserver:8761/eureka
   instance:
-    hostname: eurekaserver
+    prefer-ip-address: true
+    hostname: gateway_service
