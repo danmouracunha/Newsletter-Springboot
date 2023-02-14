@@ -27,7 +27,7 @@ public class SubscriptionServiceImpl implements SubscriptionService {
                 .firstName(subscriptionRequest.getFirstName())
                 .email(subscriptionRequest.getEmail())
                 .dateOfBirth(subscriptionRequest.getDateOfBirth())
-                .consent(subscriptionRequest.isConsent())
+                .consent(subscriptionRequest.getConsent())
                 .gender(subscriptionRequest.getGender())
                 .build();
         return subscriptionRepository.save(subscription);
