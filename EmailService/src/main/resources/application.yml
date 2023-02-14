@@ -10,7 +10,7 @@ spring:
   mail:
     host: smtp.gmail.com
     username: damouracunha@gmail.com
-    password: suyngkwlliqcuslx
+    password: zpbwswwxnminytbu
     properties:
       mail:
         smtp:

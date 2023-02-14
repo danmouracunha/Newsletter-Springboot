@@ -17,7 +17,7 @@ public class SubscriptionRequest {
     @NotNull
     private LocalDate dateOfBirth;
     @NotNull
-    private boolean consent;
+    private Boolean consent;
     @NotNull
     private UUID newsletterId;
 }
